@@ -49,7 +49,7 @@ Response is Generally Structured as
 
 	2.POST offers/update
 	Parameters
-		-maintitle  ( An identifier title for creator) //Required
+		
 		-offertitle //Required
 		-offerdesc //Required
 		-offerprice //Required
@@ -111,7 +111,7 @@ Response is Generally Structured as
 	
 	8.POST offers/all
 	Parameters
-		-id //Required
+		-
 	Response
 		'result'=>['list'=>['id','base_title','views','pic_name1','created_at','updated_at'] ]	
 
@@ -120,7 +120,7 @@ Response is Generally Structured as
 	
 	9.POST offers/all-by-limit
 	Parameters
-		-id //Required
+		-
 		-offset //required
 		-limit //required
 	Response
@@ -219,5 +219,113 @@ Response is Generally Structured as
 			-id
 			
 		Response
-			-'result'=>['count']				
-	--------------------------------------------------------------		
+			-'result'=>['count']			
+			
+	--------------------------------------------------------------------------------------------------------------------------------------------
+    *********************************************************** sales section*******************************************************************
+	--------------------------------------------------------------------------------------------------------------------------------------------
+	1.POST sales/create
+	Parameters
+		-maintitle  ( An identifier title for creator) //Required
+		-salestitle //Required
+		-salesdesc
+		-salesprice
+		-contact
+		-image
+		-image1
+		-image2
+		-image3
+		
+	Response
+		'result'=>'null'
+	---------------------------------------------------------	
+
+	2.POST sales/update
+	Parameters
+		
+		-salestitle //Required
+		-salesdesc //Required
+		-salesprice //Required
+		-contact //Required
+		-id //Required
+	Response
+		'result'=>'null'	
+	
+	-------------------------------------------------------------
+	3.POST sales/view_update
+	Parameters
+		-id //Required
+	Response
+		'result'=>'null'	
+	
+	-------------------------------------------------------------
+
+	
+		
+	4.POST sales/add-gallery  //used when gallery setup later
+	   Parameters	
+		-image
+		-image1
+		-image2
+		-image3
+		-id
+		Response
+		'result'=>'null'
+
+	-------------------------------------------------------------
+	
+	5.POST sales/delete
+	Parameters
+		-id //Required
+	Response
+		'result'=>['deleted_id'=>'15']
+	
+	
+	-------------------------------------------------------------
+	
+	6.POST sales/total
+	Parameters
+		
+	Response
+		'result'=>['deleted_id'=>'15']
+	
+	
+	-------------------------------------------------------------
+	
+	7.POST sales/details
+	Parameters
+		-id //Required
+	Response
+		'result'=>['details'=>//returns all fields of database sales_campagin,gallery ]	
+	
+	-------------------------------------------------------------
+	8.POST sales/status-update
+	Parameters
+		-id //Required
+		-status //numeric 1 or 0 used to set whether it need to show one home page results
+	Response
+		'result'=>[ ]	
+	
+
+	-------------------------------------------------------------
+
+	
+	9.POST sales/all-by-limit
+	Parameters
+		
+		-offset //required
+		-limit //required
+	Response
+		'result'=>['list'=>['id','base_title','views','pic_name1','created_at','updated_at'] ]	
+	
+
+	-------------------------------------------------------------
+		
+	10.	POST sales/campaign-status
+		Parameters	
+			-
+		Response
+			-'result'=>['status'=>['id','base_title','views','created_at','updated_at']]
+	
+	
+	
