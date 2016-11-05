@@ -135,4 +135,89 @@ Response is Generally Structured as
 		Response
 			-'result'=>['status'=>['id','base_title','views','created_at','updated_at']]
 			
-	-------------------------------------------------------------		
+	
+	------------------------------------------------------------------------------------------------------------------------------------------------------
+	**************************************************************category section***************************************************************************
+	------------------------------------------------------------------------------------------------------------------------------------------------------
+	
+	1. POST category/create
+		Parameters
+			-catname ( Category Name )
+			-parent (ID of the parent category,if not applicable send none )
+		Response
+			-'result'=>[]
+	
+	-------------------------------------------------------------
+	
+	2.  POST category/update
+		Parameters
+			-id
+			-catname ( Category Name ) // required
+			-parent //required
+		Response
+			-'result'=>[]	
+	
+	-------------------------------------------------------------
+	
+	3.  POST category/delete
+		Parameters
+			-id
+			
+		Response
+			-'result'=>[]
+
+	
+	-------------------------------------------------------------
+	
+	
+	4.  POST category/deep-delete  // used to delete all sales,category under a category 
+		Parameters
+			-id
+			
+		Response
+			-'result'=>[]
+	
+	-------------------------------------------------------------
+	
+	5.  POST category/list
+		Parameters
+			-
+		Response
+		
+		>list categories
+			-result=>[
+					'type'=>'categories'
+					'list'=>['id', 'category_name', 'created_on']
+					]
+		> if there is no categories found
+			-result=>[
+					'type'=>'products'
+					'list'=>['id','base_title','views','pic_name1','created_at','updated_at'
+					]
+					]
+	-------------------------------------------------------------
+		
+	6.  POST category/next-list  // used when nested categories validate the result by checking type 
+		Parameters
+			-id
+			
+		Response
+			>list categories
+			-result=>[
+					'type'=>'categories'
+					'list'=>['id', 'category_name', 'created_on']
+					]
+		> if there is no categories found
+			-result=>[
+					'type'=>'products'
+					'list'=>['id','base_title','views','pic_name1','created_at','updated_at'
+					]
+					]
+	-------------------------------------------------------------				
+	7.  POST category/total
+		Parameters
+			-id
+			
+		Response
+			-'result'=>['count']				
+	--------------------------------------------------------------		
