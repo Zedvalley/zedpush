@@ -221,9 +221,9 @@ Response is Generally Structured as
 		Response
 			-'result'=>['count']			
 			
-	--------------------------------------------------------------------------------------------------------------------------------------------
-    *********************************************************** sales section*******************************************************************
-	--------------------------------------------------------------------------------------------------------------------------------------------
+	-----------------------------------------------------------------------------------------------------------------------------
+    *********************************************************** sales section****************************************************
+	-----------------------------------------------------------------------------------------------------------------------------
 	1.POST sales/create
 	Parameters
 		-maintitle  ( An identifier title for creator) //Required
@@ -327,113 +327,5 @@ Response is Generally Structured as
 		Response
 			-'result'=>['status'=>['id','base_title','views','created_at','updated_at']]
 	
-	--------------------------------------------------------------------------------------------------------------------------------
-	****************************************jobs section***************************************************************************
-	-------------------------------------------------------------------------------------------------------------------------------
-	1.POST jobs/create
-	Parameters
-		-maintitle  ( An identifier title for creator) //Required
-		-jobtitle //Required
-		-jobdesc
-		-jobprice
-		-contact
-		-expires_on
-		-image
-		-image1
-		-image2
-		-image3
-		
-	Response
-		'result'=>'null'
-	---------------------------------------------------------	
-
-	2.POST jobs/update
-	Parameters
-		
-		-jobtitle //Required
-		-jobdesc //Required
-		-jobprice //Required
-		-contact //Required
-		-id //Required
-		-expires_on //Required
-	Response
-		'result'=>'null'	
 	
-	-------------------------------------------------------------
-	3.POST jobs/view_update
-	Parameters
-		-id //Required
-	Response
-		'result'=>'null'	
-	
-	-------------------------------------------------------------
-
-	
-		
-	4.POST jobs/add-gallery  //used when gallery setup later
-	   Parameters	
-		-image
-		-image1
-		-image2
-		-image3
-		-id
-		Response
-		'result'=>'null'
-
-	-------------------------------------------------------------
-	
-	5.POST jobs/delete
-	Parameters
-		-id //Required
-	Response
-		'result'=>['deleted_id'=>'15']
-	
-	
-	-------------------------------------------------------------
-	
-	6.POST jobs/total
-	Parameters
-		
-	Response
-		'result'=>['deleted_id'=>'15']
-	
-	
-	-------------------------------------------------------------
-	
-	7.POST jobs/details
-	Parameters
-		-id //Required
-	Response
-		'result'=>['details'=>//returns all fields of database job_campagin,gallery ]	
-	
-	-------------------------------------------------------------
-	
-	
-	8.POST jobs/all
-	Parameters
-		-
-	Response
-		'result'=>['list'=>['id','base_title','views','pic_name1','created_at','updated_at'] ]	
-
-	-------------------------------------------------------------
-
-	
-	9.POST jobs/all-by-limit
-	Parameters
-		-
-		-offset //required
-		-limit //required
-	Response
-		'result'=>['list'=>['id','base_title','views','pic_name1','created_at','updated_at'] ]	
-	
-
-	-------------------------------------------------------------
-		
-	10.	POST jobs/campaign-status
-		Parameters	
-			-
-		Response
-			-'result'=>['status'=>['id','base_title','views','created_at','updated_at']]
-			
-	-------------------------------------------------------------------------------------------------------------------------------------
 	
