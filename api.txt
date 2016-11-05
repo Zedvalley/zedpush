@@ -1,0 +1,138 @@
+Zedpush Api
+
+Note
+----------------------------------------------------------------------------------------------------------------------
+Base Request URL :http://localhost/zedpush/public/api/v1/
+
+Type of status messages
+-------------------------------------------------------------
+	-100 Error
+	-102 Validation Error
+	-200 Successful
+	-201 Unauthorized Update/Delete/View
+
+Every Request consist of a parameter called as 'syskey' an alphanumeric sequence to identify users.	
+---------------------------------------------------------------------------------------------------
+
+If a required parameter is empty send value 'none'
+	
+Response is Generally Structured as 
+-------------------------------------------------------------
+ - Response Dummy Format
+ 
+		{
+		['status'=> 100/102/200/201',
+		 'result'=>
+			[ //here results are placed in individual objects ]
+		 'message'=>['Shows a message about operation']
+		]
+		}
+-------------------------------------------------------------------------------------------------------------------------
+*****************************************************Offers Section*****************************************************
+-------------------------------------------------------------------------------------------------------------------------		
+    1.POST offers/create
+	Parameters
+		-maintitle  ( An identifier title for creator) //Required
+		-offertitle //Required
+		-offerdesc
+		-offerprice
+		-contact
+		-expires_on
+		-image
+		-image1
+		-image2
+		-image3
+		
+	Response
+		'result'=>'null'
+	---------------------------------------------------------	
+
+	2.POST offers/update
+	Parameters
+		-maintitle  ( An identifier title for creator) //Required
+		-offertitle //Required
+		-offerdesc //Required
+		-offerprice //Required
+		-contact //Required
+		-id //Required
+		-expires_on //Required
+	Response
+		'result'=>'null'	
+	
+	-------------------------------------------------------------
+	3.POST offers/view_update
+	Parameters
+		-id //Required
+	Response
+		'result'=>'null'	
+	
+	-------------------------------------------------------------
+
+	
+		
+	4.POST offers/add-gallery  //used when gallery setup later
+	   Parameters	
+		-image
+		-image1
+		-image2
+		-image3
+		-id
+		Response
+		'result'=>'null'
+
+	-------------------------------------------------------------
+	
+	5.POST offers/delete
+	Parameters
+		-id //Required
+	Response
+		'result'=>['deleted_id'=>'15']
+	
+	
+	-------------------------------------------------------------
+	
+	6.POST offers/total
+	Parameters
+		
+	Response
+		'result'=>['deleted_id'=>'15']
+	
+	
+	-------------------------------------------------------------
+	
+	7.POST offers/details
+	Parameters
+		-id //Required
+	Response
+		'result'=>['details'=>//returns all fields of database offer_campagin,gallery ]	
+	
+	-------------------------------------------------------------
+	
+	
+	8.POST offers/all
+	Parameters
+		-id //Required
+	Response
+		'result'=>['list'=>['id','base_title','views','pic_name1','created_at','updated_at'] ]	
+
+	-------------------------------------------------------------
+
+	
+	9.POST offers/all-by-limit
+	Parameters
+		-id //Required
+		-offset //required
+		-limit //required
+	Response
+		'result'=>['list'=>['id','base_title','views','pic_name1','created_at','updated_at'] ]	
+	
+
+	-------------------------------------------------------------
+		
+	10.	POST offers/campaign-status
+		Parameters	
+			-
+		Response
+			-'result'=>['status'=>['id','base_title','views','created_at','updated_at']]
+			
+	-------------------------------------------------------------		
