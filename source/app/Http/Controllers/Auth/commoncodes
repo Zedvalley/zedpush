@@ -1,0 +1,17 @@
+
+/*******************to update on gallery sides **************************/
+ $gal=Commons::createGallery($request);
+        if(is_object($gal))
+        {
+            return $gal;
+        }
+
+
+         if($page->created_by==$userId) {
+                    $page->save();
+                    return response()->json(['status' => 200, 'result' => [], 'message' => 'Gallery Updated Successfully']);
+                }
+                else
+                {
+                    return response()->json(['status' => 201, 'result' => [], 'message' => 'Nothing Exist']);
+                }
