@@ -10,6 +10,7 @@ Type of status messages
 	-102 Validation Error
 	-200 Successful
 	-201 Unauthorized Update/Delete/View
+	-202 login not suceessfull/invalid email id/ invalid username
 
 Every Request consist of a parameter called as 'syskey' an alphanumeric sequence to identify users.	
 ---------------------------------------------------------------------------------------------------
@@ -21,7 +22,7 @@ Response is Generally Structured as
  - Response Dummy Format
  
 		{
-		['status'=> 100/102/200/201',
+		['status'=> 100/102/200/201', ------it can get any of the status
 		 'result'=>
 			[ //here results are placed in individual objects ]
 		 'message'=>['Shows a message about operation']
