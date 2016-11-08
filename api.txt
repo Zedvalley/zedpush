@@ -437,4 +437,265 @@ Response is Generally Structured as
 			-'result'=>['status'=>['id','base_title','views','created_at','updated_at']]
 			
 	-------------------------------------------------------------------------------------------------------------------------------------
+	***************************************************Testimonials**********************************************************************
+	-------------------------------------------------------------------------------------------------------------------------------------
+	1.POST testimonials/create
+		parameters
+			-name
+			-message
+			-rating
+			-hidden
+			-image
+			
+		Response
+			-'result'=>[ ]
+	2.POST testimonials/create
+		parameters
+			-name
+			-message
+			-rating
+			-hidden
+			-id
+			
+		Response
+			-'result'=>[ ]
+	3.POST testimonials/update-image
+		parameters
+			-image
+			-id		
+		Response
+			-'result'=>[ ]		
+			
+	4.POST testimonials/delete
+		parameters
+			-id
+			
+		Response
+			-'result'=>[ ]		
+	5.POST testimonials/details
+		parameters
+			-id
+			
+		Response
+			-'result'=>['list'=>[//all details get as an array],'count'=>'']
+	6..POST testimonials/list //to get all testimonials
+		parameters
+			-
+			
+		Response
+			-'result'=>['list'=>[//all details get as an array]]
 	
+	7.POST testimonials/recent //to get recent testimonials
+		parameters
+			-
+			
+		Response
+			-'result'=>['list'=>[//all details get as an array],'count'=>'']
+			
+	-----------------------------------------------------------------------------------------------------------------------
+	**************************************************** Gallery **********************************************************
+	-----------------------------------------------------------------------------------------------------------------------
+	Note:// gallery functions  are already implemented, you can use if you want additional requirements
+	
+	1.POST gallery/create
+		parameters
+			-image
+			-image1
+			-image2
+			-image3
+			
+		Response
+			-'result'=>[ ]	
+	
+	2.POST gallery/update
+		parameters
+		    -id
+			-column // specify number,say 1,2,3,4 of the image colunm in database
+			-image
+			-image1
+			-image2
+			-image3
+			
+		Response
+			-'result'=>[ ]	
+	
+	3.POST gallery/delete
+		Parameters
+			-id
+		Response
+			-'result'=>[]
+	------------------------------------------------------------------------------------------------------------------------
+    ***************************************	Contact Us Section**************************************************************
+	------------------------------------------------------------------------------------------------------------------------
+	1.POST contact-us/create
+		parameters
+			-name
+			-email
+			-mobno
+			-message
+			
+		Response
+			-'result'=>[ ]	
+			
+	2.POST contact-us/view
+		parameters
+			-id
+			
+		Response
+			-'result'=>[ 'list'=>'']
+	
+	3.POST contact-us/list
+		parameters
+			-
+			
+		Response
+			-'result'=>['list'=>'' ]	
+	4.POST contact-us/all-by-limit
+		parameters
+			-limit
+			-offset
+			
+		Response
+			-'result'=>['list'=>'' ]			
+	5.POST contact-us/delete
+		parameters
+			-id
+			
+		Response
+			-'result'=>[ 'list'=>'']
+    -----------------------------------------------------------------------------------------------------------------------
+    ***********************************Home Page Management****************************************************************
+    -----------------------------------------------------------------------------------------------------------------------
+    1.POST home/logo-title
+	Parameters
+		-title // logo title of the page
+	Response
+		-'result'=>[ ]	
+	
+	2.POST home/gallery
+	Parameters
+		-image
+		-image1
+		-image2
+		-image3
+		
+	Response
+		-'result'=>[ ]		
+		
+	
+	3.POST home/tag // used to change the name product/service to desired
+	Parameters
+		-text //enter desired text
+	Response
+		-'result'=>[ ]	
+		
+	
+	4.POST home/about-us
+	Parameters
+		-text //enter desired text
+	Response
+		-'result'=>[ ]		
+	
+	
+	5.POST home/email
+	Parameters
+		-text //enter desired email seperated by commas
+	Response
+		-'result'=>[ ]	
+	
+	
+	6.POST home/address
+	Parameters
+		-text //enter desired address
+	Response
+		-'result'=>[ ]	
+	
+	7.POST home/contact
+	Parameters
+		-text  //enter desired contact numbers separated by commas
+	Response
+		-'result'=>[ ]		
+		
+	8.POST home/details	
+		-
+	Response
+		-'result'=>['detaials'=>[ //entire home array] ]	
+		
+	--------------------------------------------------------------------------------------------------------------------
+    **********************************************Users*****************************************************************
+    --------------------------------------------------------------------------------------------------------------------
+	
+	1.POST users/create
+	Parameters
+		-fname
+		-email
+		-mobno
+		-username
+		-password
+	Response
+		-'result'=>[ ]		
+	
+	2.POST users/shop-update
+	Parameters
+		-country_id
+		-location_id
+		-logo
+	Response
+		-'result'=>[ ]
+	
+	3.POST users/info-update
+	Parameters
+		-name
+		-email
+		-mobno
+		-username
+		-password
+		
+		
+	Response
+		-'result'=>[ ]
+    
+	4.POST users/username-update
+	Parameters
+		-username
+	Response
+		-'result'=>[ ]		
+	
+	5.POST users/password-update
+	Parameters
+		-pass1
+		-pass2
+	Response
+		-'result'=>[ ]
+	
+	6.POST users/login
+	Parameters
+		-username
+		-password
+	Response
+		-'result'=>['data'=>'get all user details' ]	
+	
+	7.POST users/check-username
+	Parameters
+		-username
+	Response
+		-'result'=>[ ]	
+	
+	8.	7.POST users/check-email
+	Parameters
+		-email
+	Response
+		-'result'=>[ ]	'
+    
+	9.	7.POST users/countries
+	Parameters
+		
+	Response
+		-'result'=>[ ]			
+	
+	10.	7.POST users/details
+	Parameters
+		-
+	Response
+		-'result'=>[ ]		
+----------------------------------------------------------------------------------------------------------------------
