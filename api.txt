@@ -697,5 +697,5 @@ Response is Generally Structured as
 	Parameters
 		-
 	Response
-		-'result'=>[ ]		
+		-'result'=>['details'=>'all details of the user']		
 ----------------------------------------------------------------------------------------------------------------------
