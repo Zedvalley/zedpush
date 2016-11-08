@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Validator;
 
 class Sales extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('AuthApi');
+    }
+
     public $slug=null;
     public function test(Request $request)
     {

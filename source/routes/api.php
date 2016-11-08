@@ -13,23 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-/*Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:api');*/
-
-//Route::resource('user', 'ApiHandler');
-
-
-Route::group(['prefix'=>'user'],function()
-{
-    //Route::resource('/','ApiHandler');
-    Route::get('/','ApiHandler@index');
-    Route::post('/validate',['uses'=>'ApiHandler@paraTransfer']);
-    Route::post('/validate/{id}',['uses'=>'ApiHandler@checkStatus']);
 
 
 
-});
 
 /******************************Operation over offers*******************************/
 // Gallery operations are specified on gallery controller
@@ -117,5 +103,42 @@ Route::group(['prefix'=>'v1/gallery'],function()
 
 });
 
+Route::group(['prefix'=>'v1/contact-us'],function()
+{
+    Route::post('/create',['uses'=>'ContactUsController@createContactRequest']);
+    Route::post('/view',['uses'=>'ContactUsController@viewContactRequest']);
+    Route::post('/list',['uses'=>'ContactUsController@listContactRequest']);
+    Route::post('/all-by-limit',['uses'=>'ContactUsController@listContactRequestByOffset']);
+    Route::post('/delete',['uses'=>'ContactUsController@deleteContactRequest']);
 
+});
+Route::group(['prefix'=>'v1/home'],function() {
+
+    Route::post('/logo-title',['uses'=>'HomeController@setLogoTitle']);
+    Route::post('/gallery',['uses'=>'HomeController@setGallery']);
+    Route::post('/tag',['uses'=>'HomeController@updateTag']);
+    Route::post('/about-us',['uses'=>'HomeController@updateAboutUs']);
+    Route::post('/email',['uses'=>'HomeController@updateEmail']);
+    Route::post('/address',['uses'=>'HomeController@updateAddress']);
+    Route::post('/contact',['uses'=>'HomeController@updateContact']);
+    Route::post('/details',['uses'=>'HomeController@getHomeDetails']);
+
+
+});
+Route::group(['prefix'=>'v1/users'],function() {
+
+    Route::post('/create',['uses'=>'UserController@create']);
+    Route::post('/shop-update',['uses'=>'UserController@updateShopDetails']);
+    Route::post('/info-update',['uses'=>'UserController@updatePersonalInfo']);
+    Route::post('/username-update',['uses'=>'UserController@updateUsername']);
+    Route::post('/password-update',['uses'=>'UserController@updatePassword']);
+    Route::post('/login',['uses'=>'UserController@login']);
+    Route::post('/check-username',['uses'=>'UserController@checkUsernameExist']);
+    Route::post('/check-email',['uses'=>'UserController@checkEmailExist']);
+    Route::post('/countries',['uses'=>'UserController@getCountriesList']);
+    Route::post('/details',['uses'=>'UserController@getUserDetails']);
+
+
+
+});
 

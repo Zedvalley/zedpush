@@ -14,6 +14,13 @@ use Illuminate\Support\Facades\Validator;
 
 class Commons extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('AuthApi');
+    }
+
+
     public static function checkForEmpty($value)
     {
         if($value==' ' || $value==null || $value=='none' || $value=='')
@@ -100,11 +107,14 @@ class Commons extends Controller
                     }
                     break;
 
-
             }
+        }
+        if($i==0) {
+            return null;
         }
         $gallery->save();
         return $gallery->id;
+
 
     }
     public static function updateGalleryBulk(Request $request,$creatorId)

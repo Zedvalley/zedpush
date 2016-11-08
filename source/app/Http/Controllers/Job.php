@@ -13,6 +13,11 @@ use App\Http\Requests;
 
 class Job extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('AuthApi');
+    }
+
     public $slug=null;
     public function updateJob(Request $request)
     {

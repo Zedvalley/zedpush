@@ -13,9 +13,10 @@ class Gallery extends Model
     {
         return $this->where('id','=',$id)->first();
     }
-    public static function initializeHome()
+    public static function initializeHome($userid)
     {
         $gallery= new Gallery();
+        $gallery->created_by=$userid;
         $gallery->save();
         return $gallery->id;
     }

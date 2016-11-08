@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Validator;
 
 class Offers extends Controller
 {
+
     public $slug=null;
 
     public function __construct()

@@ -9,6 +9,7 @@ use App\Http\Requests;
 
 class DomainMapper extends Controller
 {
+
     public function getUserIdFromDomain($dname)
     {
         $result=new Domains();

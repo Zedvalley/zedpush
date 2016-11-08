@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Validator;
 
 class TestimonialsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('AuthApi');
+    }
+
+
     public function createTestimonial(Request $request)
     {
 
@@ -167,8 +173,7 @@ class TestimonialsController extends Controller
         $id=$request->input('id');
         $page=Testimonials::where('created_by',$userId)->where('id',$id);
         $result=$page->get();
-        $count=$page->count();
-        return response()->json(['status'=>200,'result'=>['list'=>$result,'count'=>$count],
+        return response()->json(['status'=>200,'result'=>['list'=>$result],
             'message'=>'Successfull']);
 
     }
@@ -188,6 +193,7 @@ class TestimonialsController extends Controller
         $validator= Validator::make($request->all(),
             [
                 'offset'=>'numeric',
+                'limit'=>'numeric'
 
 
             ]);
@@ -198,8 +204,9 @@ class TestimonialsController extends Controller
         $userId=Users::getCreatorFromKey($request->input('syskey'));
         $page= new Testimonials();
         $offset=$request->input('offset');
+        $limit=$request->input('limir');
         $page=$page->identify($userId);
-        $result=$page->orderBy('created_at', 'desc')->limit($offset)->get();
+        $result=$page->orderBy('created_at', 'desc')->limit($limit)->offset($offset)->get();
         $count=$page->get()->count();
         return response()->json(['status'=>200,'result'=>['list'=>$result,'count'=>$count],
             'message'=>'Successfull']);

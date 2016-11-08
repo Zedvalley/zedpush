@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\DB;
 
 class ContactsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('AuthApi');
+    }
+
     public function insertAContact(Request $request)
     {
         $userId=Users::getCreatorFromKey($request->input('syskey'));

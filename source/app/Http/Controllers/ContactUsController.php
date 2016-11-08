@@ -4,28 +4,43 @@ namespace App\Http\Controllers;
 
 use App\model\ContactUs;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use App\model\Users;
 
 use App\Http\Requests;
 
 class ContactUsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('AuthApi');
+    }
+
     public function createContactRequest(Request $request)
     {
         $validator= Validator::make($request->all(),
             [
                 'name'=>'required|max:150',
-                'email'=>'email',
+                'email'=>'required|email',
+                'mobno'=>'required',
                 'message'=>'required|max:500'
-            ]);
+            ],
+            [
+                'mobno'=>'Mobile number doesnot match'
+            ]
+            );
         if($validator->fails())
         {
             return response()->json(['status'=>102,'result'=>$validator->errors()]);
         }
 
         $handler=new ContactUs();
+        $userId=Users::getCreatorFromKey($request->input('syskey'));
+        $handler->created_by=$userId;
+        $handler->submitted_at=new \DateTime();
         $handler->name=$request->input('name');
         $handler->email=Commons::checkForEmpty($request->input('email'));
-        $handler->mobile=Commons::checkForEmpty($request->input('mobile'));
+        $handler->mobile=Commons::checkForEmpty($request->input('mobno'));
         $handler->message=$request->input('message');
         $handler->save();
         return response()->json(['status'=>200,'result'=>[],
@@ -68,7 +83,7 @@ class ContactUsController extends Controller
     public function listContactRequest(Request $request)
     {
         $userId=Users::getCreatorFromKey($request->input('syskey'));
-        $handler=ContactUs::where('created_by',$userId)->select('id,name,submitted_at');
+        $handler=ContactUs::where('created_by',$userId)->select('id','name','submitted_at');
         $count=$handler->count();
         $result=$handler->get();
         return response()->json(['status'=>200,'result'=>['count'=>$count,'result'=>$result],
@@ -78,7 +93,8 @@ class ContactUsController extends Controller
     {
         $validator= Validator::make($request->all(),
             [
-                'offset'=>'numeric',
+                'offset'=>'required|numeric',
+                'limit'=>'required|numeric'
             ]);
         if($validator->fails())
         {
@@ -86,7 +102,8 @@ class ContactUsController extends Controller
         }
         $userId=Users::getCreatorFromKey($request->input('syskey'));
         $offset=$request->input('offset');
-        $handler=ContactUs::where('created_by',$userId)->select('id,name,submitted_at')->limit($offset);
+        $limit=$request->input('limit');
+        $handler=ContactUs::where('created_by',$userId)->select('id','name','submitted_at')->offset($offset)->limit($limit);
         $count=$handler->count();
         $result=$handler->get();
         return response()->json(['status'=>200,'result'=>['count'=>$count,'result'=>$result],
